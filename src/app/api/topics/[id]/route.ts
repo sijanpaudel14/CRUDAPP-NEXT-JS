@@ -1,13 +1,12 @@
 import connectMongoDB from "@/libs/mongodb";
 import Topic from "@/models/topic";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }  // Use primitive 'string' instead of 'String'
-) {
-  const { id } = params;
+// PUT handler
+export async function PUT(request: NextRequest) {
   const { newTitle: title, newDescription: description } = await request.json();
+  const id = request.nextUrl.pathname.split('/')[4];  // Extracts the ID from the URL
+
   await connectMongoDB();
   const updatedTopic = await Topic.findByIdAndUpdate(
     id,
@@ -24,11 +23,10 @@ export async function PUT(
   );
 }
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }  // Use primitive 'string' here as well
-) {
-  const { id } = params;  // No need to await 'params'
+// GET handler
+export async function GET(request: NextRequest) {
+  const id = request.nextUrl.pathname.split('/')[4];  // Extracts the ID from the URL
+
   await connectMongoDB();
   const topic = await Topic.findOne({ _id: id });
 
