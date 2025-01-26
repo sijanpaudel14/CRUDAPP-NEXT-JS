@@ -1,9 +1,9 @@
 import connectMongoDB from "@/libs/mongodb";
 import Topic from "@/models/topic";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }  // Use primitive 'string' instead of 'String'
 ) {
   const { id } = params;
@@ -25,7 +25,7 @@ export async function PUT(
 }
 
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }  // Use primitive 'string' here as well
 ) {
   const { id } = params;  // No need to await 'params'
