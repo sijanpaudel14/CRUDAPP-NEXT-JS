@@ -1,7 +1,7 @@
 import TopicsList from '@/components/TopicsList'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <>
     <TopicsList />
@@ -9,4 +9,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default Page;

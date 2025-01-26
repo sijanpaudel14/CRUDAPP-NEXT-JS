@@ -17,7 +17,7 @@ const EditTopicForm: React.FC<EditTopicFormProps> = ({ id, title, description })
     const [newTitle, setNewTitle] = useState(title);
     const [newDescription, setNewDescription] = useState(description);
 
-    const handleSumbit = async (e: any) => {
+    const handleSumbit = async () => {
         try {
             const res = await fetch(`http://localhost:3000/api/topics/${id}`,
                 {
@@ -35,7 +35,7 @@ const EditTopicForm: React.FC<EditTopicFormProps> = ({ id, title, description })
                 
 
         } catch (error) {
-
+            console.log(error);
         }
     }
     return (

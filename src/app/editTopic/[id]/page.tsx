@@ -17,7 +17,7 @@ const getTopicById = async (id: string) => {
   }
 }
 
-const page = async ({ params }: { params: { id: string } }) => {
+const Page = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
   const { topic } = await getTopicById(id);
   const { title, description } = topic;
@@ -29,4 +29,4 @@ const page = async ({ params }: { params: { id: string } }) => {
   )
 }
 
-export default page
+export default Page;

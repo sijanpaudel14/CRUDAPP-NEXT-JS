@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 
-const page = () => {
+const Page = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter();
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async () => {
 
     if (!title || !description) {
       alert("Title and description cannot be empty");
@@ -26,17 +26,17 @@ const page = () => {
           title, description
         })
       })
-        if (res.ok){
-          router.push("/")
-        }
-        else{
-          throw new Error("Failed to create a Topic");
-        }
+      if (res.ok) {
+        router.push("/")
+      }
+      else {
+        throw new Error("Failed to create a Topic");
+      }
 
-      
+
 
     } catch (error) {
-
+      console.log(error);
     }
   };
 
@@ -67,4 +67,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
